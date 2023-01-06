@@ -56,17 +56,50 @@ public class ServicoAPI {
 		}
 		
 	}
-
+	
 	private static void imprimir(Historico historico) {
 		System.out.println("codParc: " + historico.getCodparc());
 		System.out.println("negocio: " + historico.getNegocio());
 		System.out.println("versaoSistema: " + historico.getVersaosistema());
 		System.out.println("banco: " + historico.getBanco());
-		System.out.println("extensao: " + historico.getExtensao());
+		System.out.println("descrição: " + historico.getExtensao().getDescricao());
+		System.out.println("versaõ descrição: " + historico.getExtensao().getVersao());
+		System.out.println("data hora instalacao: " + historico.getExtensao().getDataHoraInstalacao());
+		System.out.println("data hora build: " + historico.getExtensao().getDataHoraBuild());
 		
 	}
 	
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

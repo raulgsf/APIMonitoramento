@@ -27,7 +27,7 @@ public class Historico {
 		return extensao;
 	}
 	
-	class Extensao{
+	public class Extensao{
 		String descricao;
 		String versao;
 		String dataHoraInstalacao;
