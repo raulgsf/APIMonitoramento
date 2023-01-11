@@ -1,23 +1,54 @@
 package dominio;
 
+import java.math.BigDecimal;
+
 public class Monitoramento {
 	String dados;
+	String skwurl;
 	String skwuser;
 	String skwpassword;
-	String codparc;
+	BigDecimal codparc;
 	
-	public String getSKWUSER() {
+	public String getDados() {
+		return dados;
+	}
+
+	public void setDados(String dados) {
+		this.dados = dados;
+	}
+	
+	public String getSkwurl() {
+		return skwurl;
+	}
+	
+	public void setUrl(String skwurl) {
+		this.skwurl = skwurl;
+	}
+	
+	public String getSkwuser() {
 		return skwuser;
 	}
-	
-	public String getSKWPASSWORD() {
+
+	public void setSkwuser(String skwuser) {
+		this.skwuser = skwuser;
+	}
+
+	public String getSkwpassword() {
 		return skwpassword;
 	}
-	
-	public String getCODPARC() {
+
+	public void setSkwpassword(String skwpassword) {
+		this.skwpassword = skwpassword;
+	}
+
+	public BigDecimal getCodparc() {
 		return codparc;
 	}
-	
+
+	public void setCodparc(BigDecimal bigDecimal) {
+		this.codparc = bigDecimal;
+	}
+
 	@Override
 	public String toString() {
 		return "Dados [dados=" + skwuser + skwpassword + codparc + "]";

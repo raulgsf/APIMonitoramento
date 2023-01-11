@@ -1,26 +1,58 @@
 package dominio;
 
+import java.math.BigDecimal;
+import java.sql.Timestamp;
+
 public class Historico {
-	String codparc;
+	BigDecimal codparc;
+	Integer sequencia;
 	String negocio;
-	String versaosistema;
+	String versaoSistema;
 	String banco;
 	Extensao extensao;
 	
-	public String getCodparc() {
+	public BigDecimal getCodparc() {
 		return codparc;
+	}
+	
+	public Integer getSequencia() {
+		return sequencia;
 	}
 	
 	public String getNegocio() {
 		return negocio;
 	}
 	
-	public String getVersaosistema() {
-		return versaosistema;
+	public String getVersaoSistema() {
+		return versaoSistema;
 	}
 	
 	public String getBanco() {
 		return banco;
+	}
+	
+	public void setCodparc(BigDecimal codparc) {
+		this.codparc = codparc;
+	}
+
+	public void setSequencia(Integer sequencia) {
+		this.sequencia = sequencia;
+	}
+	
+	public void setNegocio(String negocio) {
+		this.negocio = negocio;
+	}
+
+	public void setVersaoSistema(String versaoSistema) {
+		this.versaoSistema = versaoSistema;
+	}
+
+	public void setBanco(String banco) {
+		this.banco = banco;
+	}
+
+	public void setExtensao(Extensao extensao) {
+		this.extensao = extensao;
 	}
 	
 	public Extensao getExtensao() {
@@ -29,26 +61,34 @@ public class Historico {
 	
 	public class Extensao{
 		String descricao;
-		String versao;
-		String dataHoraInstalacao;
-		String dataHoraBuild;
+		BigDecimal versao;
+		Timestamp dataHoraInstalacao;
+		Timestamp dataHoraBuild;
+		Timestamp dataHoraMonitoramento;
+		String tipo;
 		
 		public String getDescricao() {
 			return descricao;
 		}
 		
-		public String getVersao() {
+		public BigDecimal getVersao() {
 			return versao;
 		}
 		
-		public String getDataHoraInstalacao() {
+		public Timestamp getDataHoraInstalacao() {
 			return dataHoraInstalacao;
 		}
 		
-		public String getDataHoraBuild() {
+		public Timestamp getDataHoraBuild() {
 			return dataHoraBuild;
 		}
 		
-	}
-	
+		public Timestamp getDataHoraMonitoramento() {
+			return dataHoraMonitoramento;
+		}
+		
+		public String getTipo() {
+			return tipo;
+		}
+	}	
 }
