@@ -4,14 +4,14 @@ import java.math.BigDecimal;
 import java.sql.Timestamp;
 
 public class Historico {
-	BigDecimal codparc;
+	String codparc;
 	Integer sequencia;
 	String negocio;
 	String versaoSistema;
 	String banco;
 	Extensao extensao;
 	
-	public BigDecimal getCodparc() {
+	public String getCodparc() {
 		return codparc;
 	}
 	
@@ -31,7 +31,7 @@ public class Historico {
 		return banco;
 	}
 	
-	public void setCodparc(BigDecimal codparc) {
+	public void setCodparc(String codparc) {
 		this.codparc = codparc;
 	}
 
@@ -61,7 +61,7 @@ public class Historico {
 	
 	public class Extensao{
 		String descricao;
-		BigDecimal versao;
+		String versao;
 		Timestamp dataHoraInstalacao;
 		Timestamp dataHoraBuild;
 		Timestamp dataHoraMonitoramento;
@@ -71,7 +71,7 @@ public class Historico {
 			return descricao;
 		}
 		
-		public BigDecimal getVersao() {
+		public String getVersao() {
 			return versao;
 		}
 		

@@ -7,6 +7,7 @@ import java.io.OutputStream;
 import java.math.BigDecimal;
 import java.net.HttpURLConnection;
 import java.net.URL;
+import java.text.DateFormat;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
@@ -59,7 +60,7 @@ public class ServicoAPI {
 			Gson gson = new GsonBuilder().setDateFormat("yyyy-MM-dd HH:mm:ss").create();
 			Historico historico = gson.fromJson(jsonEmString, Historico.class);
 			
-			historico.setCodparc(codparc);
+			historico.setCodparc(codparc.toString());
 			imprimir(historico);
 			salvarInformacoes(historico);
 			
@@ -77,7 +78,7 @@ public class ServicoAPI {
 			EntityFacade dwfFacade = EntityFacadeFactory.getDWFFacade();
 
 			DynamicVO VO = (DynamicVO) dwfFacade.getDefaultValueObjectInstance("AD_DASSMO");
-			VO.setProperty("CODPARC", historico.getCodparc());
+			VO.setProperty("CODPARC", new BigDecimal(historico.getCodparc()));
 			VO.setProperty("NEGOCIO", historico.getNegocio());
 			VO.setProperty("VERSAOSISTEMA", historico.getVersaoSistema());
 			VO.setProperty("BANCO", historico.getBanco());
