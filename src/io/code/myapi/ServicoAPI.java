@@ -7,7 +7,6 @@ import java.io.OutputStream;
 import java.math.BigDecimal;
 import java.net.HttpURLConnection;
 import java.net.URL;
-import java.text.DateFormat;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
@@ -18,7 +17,6 @@ import br.com.sankhya.jape.core.JapeSession;
 import br.com.sankhya.jape.core.JapeSession.SessionHandle;
 import br.com.sankhya.jape.vo.DynamicVO;
 import br.com.sankhya.jape.vo.EntityVO;
-import br.com.sankhya.modelcore.util.DynamicEntityNames;
 import br.com.sankhya.modelcore.util.EntityFacadeFactory;
 import dominio.Historico;
 
@@ -61,7 +59,7 @@ public class ServicoAPI {
 			Historico historico = gson.fromJson(jsonEmString, Historico.class);
 			
 			historico.setCodparc(codparc.toString());
-			imprimir(historico);
+			///imprimir(historico);
 			salvarInformacoes(historico);
 			
 		} catch (Exception e) {
@@ -77,17 +75,16 @@ public class ServicoAPI {
 			hnd = JapeSession.open();
 			EntityFacade dwfFacade = EntityFacadeFactory.getDWFFacade();
 
-			DynamicVO VO = (DynamicVO) dwfFacade.getDefaultValueObjectInstance("AD_DASSMO");
-			VO.setProperty("CODPARC", new BigDecimal(historico.getCodparc()));
-			VO.setProperty("NEGOCIO", historico.getNegocio());
-			VO.setProperty("VERSAOSISTEMA", historico.getVersaoSistema());
-			VO.setProperty("BANCO", historico.getBanco());
-			VO.setProperty("DESCRICAO", historico.getExtensao().getDescricao());
-			VO.setProperty("VERSAODESCRICAO", historico.getExtensao().getVersao());
-			VO.setProperty("DATAHORAINSTALACAO", historico.getExtensao().getDataHoraInstalacao());
-			VO.setProperty("DATAHORABUILD", historico.getExtensao().getDataHoraBuild());
-			VO.setProperty("DATAHORAMONITORAMENTO", historico.getExtensao().getDataHoraMonitoramento());
-			dwfFacade.createEntity("AD_DASSMO", (EntityVO) VO);
+			DynamicVO vo = (DynamicVO) dwfFacade.getDefaultValueObjectInstance("AD_DASSMO");
+			vo.setProperty("CODPARC", new BigDecimal(historico.getCodparc()));
+			vo.setProperty("NEGOCIO", historico.getNegocio());
+			vo.setProperty("VERSAOSISTEMA", historico.getVersaoSistema());
+			vo.setProperty("BANCO", historico.getBanco());
+			vo.setProperty("DESCRICAO", historico.getExtensao().getDescricao());
+			vo.setProperty("VERSAODESCRICAO", historico.getExtensao().getVersao());
+			vo.setProperty("DATAHORAINSTALACAO", historico.getExtensao().getDataHoraInstalacao());
+			vo.setProperty("DATAHORABUILD", historico.getExtensao().getDataHoraBuild());
+			dwfFacade.createEntity("AD_DASSMO", (EntityVO) vo);
 			
 		} finally {
 		    JapeSession.close(hnd);
@@ -95,7 +92,7 @@ public class ServicoAPI {
 		
 	}
 	
-	private static void imprimir(Historico historico) {
+	/*private static void imprimir(Historico historico) {
 		System.out.println("codParc: " + historico.getCodparc());
 		System.out.println("negocio: " + historico.getNegocio());
 		System.out.println("versaoSistema: " + historico.getVersaoSistema());
@@ -103,9 +100,9 @@ public class ServicoAPI {
 		System.out.println("descrição: " + historico.getExtensao().getDescricao());
 		System.out.println("versão descrição: " + historico.getExtensao().getVersao());
 		System.out.println("data hora instalacao: " + historico.getExtensao().getDataHoraInstalacao());
-		System.out.println("data hora build: " + historico.getExtensao().getDataHoraBuild());
+		System.out.println("data hora build: " + historico.getExtensao().getDataHoraBuild())
 		
-	}
+	}*/
 }
 
 

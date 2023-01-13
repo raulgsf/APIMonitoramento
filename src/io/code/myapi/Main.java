@@ -12,10 +12,7 @@ import br.com.sankhya.jape.vo.DynamicVO;
 import br.com.sankhya.modelcore.util.EntityFacadeFactory;
 import dominio.Monitoramento;
 
-public class Main implements AcaoRotinaJava{
-	public static void main(String[] args) throws Exception {
-	
-	}
+public class Main implements AcaoRotinaJava {
 	
 	@Override
 	public void doAction(ContextoAcao contexto) throws Exception {	
@@ -24,15 +21,7 @@ public class Main implements AcaoRotinaJava{
 		
 		for(Monitoramento monitor : monitoramentos) {
 			ServicoAPI.monitorar(monitor.getSkwuser(), monitor.getSkwpassword(), monitor.getSkwurl(), monitor.getCodparc());
-			contexto.setMensagemRetorno("URL: " + monitor.getSkwurl());
 		}
-		
-		/*final String SKW_USER = "PEC";
-		final String SKW_PASSWORD = "Jv120910";
-		final String SKW_URL = "http://45.236.220.234:8180/codepec/info";
-		final String SKW_COMPANY_ID = null;
-
-		ServicoAPI.monitorar(SKW_USER, SKW_PASSWORD, SKW_URL, SKW_COMPANY_ID);*/
 		
 	}
 
@@ -53,4 +42,5 @@ public class Main implements AcaoRotinaJava{
 		
 		return monitoramentos;
 	}
+
 }

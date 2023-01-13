@@ -63,7 +63,6 @@ public class Historico {
 		String versao;
 		Timestamp dataHoraInstalacao;
 		Timestamp dataHoraBuild;
-		Timestamp dataHoraMonitoramento;
 		String tipo;
 		
 		public String getDescricao() {
@@ -80,10 +79,6 @@ public class Historico {
 		
 		public Timestamp getDataHoraBuild() {
 			return dataHoraBuild;
-		}
-		
-		public Timestamp getDataHoraMonitoramento() {
-			return dataHoraMonitoramento;
 		}
 		
 		public String getTipo() {
