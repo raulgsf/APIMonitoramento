@@ -20,7 +20,7 @@ public class Main implements AcaoRotinaJava {
 		List<Monitoramento> monitoramentos = buscaParceiros();
 		
 		for(Monitoramento monitor : monitoramentos) {
-			ServicoAPI.monitorar(monitor.getSkwuser(), monitor.getSkwpassword(), monitor.getSkwurl(), monitor.getCodparc());
+			ServicoAPI.monitorar(monitor.getSkwuser(), monitor.getSkwpassword(), monitor.getSkwurl(), monitor.getPecurl(), monitor.getCodparc());
 		}
 		
 	}
@@ -36,7 +36,8 @@ public class Main implements AcaoRotinaJava {
 			monitor.setCodparc(vo.asBigDecimal("CODPARC"));
 			monitor.setSkwuser(vo.asString("SKWUSER"));
 			monitor.setSkwpassword(vo.asString("SKWPASSWORD"));
-			monitor.setUrl(vo.asString("URLSKW"));
+			monitor.setSkwurl(vo.asString("URLSKW"));
+			monitor.setPecurl(vo.asString("URLPEC"));
 			monitoramentos.add(monitor);
 		}
 		

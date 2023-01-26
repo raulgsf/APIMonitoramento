@@ -22,8 +22,8 @@ import dominio.Historico;
 
 public class ServicoAPI {
 	
-	public static HttpURLConnection montarConexao(String skw_user, String skw_password, String skw_url, BigDecimal skw_company_id) throws IOException {
-		URL url = new URL(skw_url);
+	public static HttpURLConnection montaconexao(String skw_user, String skw_password, String skw_url, String pec_url, BigDecimal skw_company_id) throws IOException {
+		URL url = new URL(skw_url+"/codepec/info");
 
 		HttpURLConnection conn = (HttpURLConnection) url.openConnection();
 		
@@ -37,7 +37,7 @@ public class ServicoAPI {
         requestBody.addProperty("SkW_COMPANY_ID", skw_company_id);
 
         OutputStream os = conn.getOutputStream();
-        byte[] input = requestBody.toString().getBytes("utf-8");
+        byte[] input = requestBody.toString().getBytes("UTF-8");
         os.write(input, 0, input.length);
         os.flush();
         os.close();
@@ -47,22 +47,24 @@ public class ServicoAPI {
         return conn;
     }
 	
-	public static void monitorar(String skw_user, String skw_password, String skw_url, BigDecimal codparc) throws Exception {
+	public static void monitorar(String skw_user, String skw_password, String skw_url, String pec_url, BigDecimal codparc) throws Exception {
 		
 		try {
-			HttpURLConnection conexao = montarConexao(skw_user, skw_password, skw_url, codparc);
+			HttpURLConnection conexao = montaconexao(skw_user, skw_password, skw_url, pec_url, codparc);
 			
 			BufferedReader resposta = new BufferedReader(new InputStreamReader(conexao.getInputStream()));
 			String jsonEmString = Util.converteJsonEmString(resposta);
 			
 			Gson gson = new GsonBuilder().setDateFormat("yyyy-MM-dd HH:mm:ss").create();
+			System.out.println("Histórico: " + jsonEmString);
 			Historico historico = gson.fromJson(jsonEmString, Historico.class);
 			
 			historico.setCodparc(codparc.toString());
-			///imprimir(historico);
+			imprimir(historico);
 			salvarInformacoes(historico);
 			
 		} catch (Exception e) {
+			e.printStackTrace();
 			throw new Exception("ERRO: " + e);
 		}
 		
@@ -92,7 +94,7 @@ public class ServicoAPI {
 		
 	}
 	
-	/*private static void imprimir(Historico historico) {
+	private static void imprimir(Historico historico) {
 		System.out.println("codParc: " + historico.getCodparc());
 		System.out.println("negocio: " + historico.getNegocio());
 		System.out.println("versaoSistema: " + historico.getVersaoSistema());
@@ -100,9 +102,9 @@ public class ServicoAPI {
 		System.out.println("descrição: " + historico.getExtensao().getDescricao());
 		System.out.println("versão descrição: " + historico.getExtensao().getVersao());
 		System.out.println("data hora instalacao: " + historico.getExtensao().getDataHoraInstalacao());
-		System.out.println("data hora build: " + historico.getExtensao().getDataHoraBuild())
+		System.out.println("data hora build: " + historico.getExtensao().getDataHoraBuild());
 		
-	}*/
+	}  
 }
 
 

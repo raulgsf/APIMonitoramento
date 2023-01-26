@@ -5,10 +5,11 @@ import java.math.BigDecimal;
 public class Monitoramento {
 	String dados;
 	String skwurl;
+	String pecurl;
 	String skwuser;
 	String skwpassword;
 	BigDecimal codparc;
-	
+
 	public String getDados() {
 		return dados;
 	}
@@ -21,8 +22,16 @@ public class Monitoramento {
 		return skwurl;
 	}
 	
-	public void setUrl(String skwurl) {
+	public void setSkwurl(String skwurl) {
 		this.skwurl = skwurl;
+	}
+	
+	public String getPecurl() {
+		return pecurl;
+	}
+
+	public void setPecurl(String pecurl) {
+		this.pecurl = pecurl;
 	}
 	
 	public String getSkwuser() {
